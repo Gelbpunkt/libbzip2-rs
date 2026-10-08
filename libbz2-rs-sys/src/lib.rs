@@ -3,9 +3,12 @@
 #![allow(clippy::too_many_arguments)]
 #![deny(unreachable_pub)]
 #![deny(unsafe_op_in_unsafe_fn)]
+#![feature(ptr_cast_slice)]
+#![feature(allocator_ext)]
 
 //! A drop-in compatible rust implementation of bzip2
 
+extern crate alloc;
 #[cfg(feature = "std")]
 extern crate std;
 
@@ -220,8 +223,6 @@ impl core::fmt::Display for AssertFail {
 
 #[cfg(test)]
 mod test {
-    extern crate alloc;
-
     use super::*;
 
     use alloc::string::String;
